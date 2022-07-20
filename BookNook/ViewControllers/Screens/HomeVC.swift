@@ -108,6 +108,8 @@ func add(childVC: UIViewController, to containerView: UIView){
     func configureHeaderView(){
         view.addSubview(headerView)
         headerView.layer.cornerRadius = 10
+        headerView.layer.shadowRadius = 10
+        headerView.layer.shadowOpacity = 0.5
         headerView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([

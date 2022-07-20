@@ -17,6 +17,7 @@ class BNTabBarController: UITabBarController {
         UITabBar.appearance().tintColor = .white
         UITabBar.appearance().unselectedItemTintColor = .white
         UITabBar.appearance().itemWidth = 10
+
         viewControllers = [createHomeNC(), createFavouriteNC(),createStoreNC(), createSettingsNC()]
      
         
