@@ -26,6 +26,8 @@ class HomeVC: UIViewController {
     let booksForYouCollection = UIView()
     let newBooks = UIView()
     
+    
+    
     var books = [
         BookData(image: UIImage(named: "book1")!, title: "Happy"),
         BookData(image: UIImage(named: "book2")!, title: "You are your only limit"),
@@ -49,7 +51,7 @@ class HomeVC: UIViewController {
        let layout = UICollectionViewFlowLayout()
        layout.scrollDirection = .horizontal
        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-       cv.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        cv.register(CategoriesCollectionViewCell.self, forCellWithReuseIdentifier: CategoriesCollectionViewCell.reuseID)
        cv.translatesAutoresizingMaskIntoConstraints = false
        return cv
    }()
@@ -59,7 +61,7 @@ class HomeVC: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.register(BFYCollectionViewCell.self, forCellWithReuseIdentifier: "cell2")
+         cv.register(BFYCollectionViewCell.self, forCellWithReuseIdentifier: BFYCollectionViewCell.reuseID)
         cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
@@ -69,6 +71,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureNavigationVIew()
+        addChildVCs()
         configureHeaderView()
         configureCategoriesView()
         configureBooksForYouLabel()
@@ -76,10 +79,13 @@ class HomeVC: UIViewController {
         configureNewBooks()
 
         
+        
+    func addChildVCs(){
         self.add(childVC: HeaderVC(), to: headerView)
         self.add(childVC: CatogoriesVC(), to: categories)
         self.add(childVC: NewBooksVC(), to: newBooks)
 }
+    }
     
     
 func add(childVC: UIViewController, to containerView: UIView){
@@ -125,6 +131,7 @@ func add(childVC: UIViewController, to containerView: UIView){
         view.addSubview(categoriesCollectionView)
         categoriesCollectionView.backgroundColor = .systemBackground
         categoriesCollectionView.showsHorizontalScrollIndicator = false
+        categoriesCollectionView.translatesAutoresizingMaskIntoConstraints = false
 
         categoriesCollectionView.delegate = self
         categoriesCollectionView.dataSource = self
@@ -197,19 +204,20 @@ extension HomeVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (collectionView == booksForYouCollection){
-            return books.count
+        
+        if (collectionView == categoriesCollectionView){
+            return categoriesCollection.count
         }
-        return categoriesCollection.count
+        return books.count
     }
 
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath ) as! CategoriesCollectionViewCell
+        let cell = categoriesCollectionView.dequeueReusableCell(withReuseIdentifier: CategoriesCollectionViewCell.reuseID, for: indexPath ) as! CategoriesCollectionViewCell
         cell.data = self.categoriesCollection[indexPath.row]
         
         if (collectionView == booksForYouCollectionView){
-            let cell2 = booksForYouCollectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath ) as! BFYCollectionViewCell
+            let cell2 = booksForYouCollectionView.dequeueReusableCell(withReuseIdentifier: BFYCollectionViewCell.reuseID, for: indexPath ) as! BFYCollectionViewCell
             cell2.data = self.books[indexPath.row]
             return cell2
         }

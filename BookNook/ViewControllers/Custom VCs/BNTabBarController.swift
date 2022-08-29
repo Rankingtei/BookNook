@@ -9,8 +9,6 @@ import UIKit
 
 class BNTabBarController: UITabBarController {
     
-  
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().backgroundColor = .black
@@ -31,10 +29,6 @@ class BNTabBarController: UITabBarController {
             self.tabBar.layer.cornerRadius = 18
             self.tabBar.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         
-//           tabFrame = self.tabBar.frame; //self.TabBar is IBOutlet of your TabBar
-//           tabFrame.size.height = 80 ;
-//           tabFrame.origin.y = self.view.frame.size.height - 80 ;
-//           self.tabBar.frame = tabFrame;
 
         }
     

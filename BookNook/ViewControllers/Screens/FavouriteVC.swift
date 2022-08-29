@@ -133,8 +133,6 @@ class FavouriteVC: UIViewController {
     }
         
     
-    
-    
     func configureCollecionView(){
         view.addSubview(collectionView)
         collectionView.backgroundColor = .systemBackground
@@ -152,6 +150,7 @@ class FavouriteVC: UIViewController {
         ])
     }
 }
+
 
 extension FavouriteVC: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     

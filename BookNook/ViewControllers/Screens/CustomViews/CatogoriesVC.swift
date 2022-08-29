@@ -50,8 +50,7 @@ class CatogoriesVC: UIViewController {
         stackView.spacing =   6
         stackView.alignment = .leading
         
-//        let secondView = stackView.arrangedSubviews[2]
-//        secondView.isHidden = true
+
         
         return stackView
     }()

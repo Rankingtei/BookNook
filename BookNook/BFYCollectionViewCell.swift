@@ -14,6 +14,7 @@ import UIKit
 //}
 
 class BFYCollectionViewCell: UICollectionViewCell {
+    
     static let reuseID = "BookCell"
     
     

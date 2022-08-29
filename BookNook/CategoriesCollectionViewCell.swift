@@ -7,9 +7,11 @@
 
 import UIKit
 
-let reuseID = "CaterogiesCell"
+
 
 class CategoriesCollectionViewCell: UICollectionViewCell {
+    
+    static let reuseID = "CaterogiesCell"
     
     let categoriesLabel: UILabel = {
         let label = UILabel()
